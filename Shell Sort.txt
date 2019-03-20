@@ -1,0 +1,41 @@
+#include <cstdlib>
+#include <iostream>
+#include <time.h>
+using namespace std;
+
+int main()
+{
+	int banyak_data,i,j,tampung,bagi,s;
+	
+	std:: cout << "Masukkan jumlah data : ";
+	std:: cin >> banyak_data;
+	int data[banyak_data];
+	
+	srand(time(0));
+	for(i=0	; i<banyak_data; i++){
+		data[i]=(rand()%100);
+	}
+	for(i=0	; i<banyak_data; i++){
+		cout<<data[i]<<" ";
+	}
+	cout<<endl<<endl;
+	bagi= banyak_data/2;
+	do{
+		for (i=bagi; i<banyak_data; i++)
+		{
+			tampung = data[i];
+			j=i-bagi;
+			while (j>=0 && data[j]> tampung){
+				data[j+bagi]=data[j];
+				j=j-bagi;
+			}
+			data[j+bagi]=tampung;
+		}
+		bagi = bagi/2;
+	}while (bagi>0);
+	cout<<"Data yang sudah tersusun"<<endl;
+	for (s=0; s<banyak_data; s++){
+		cout<<data[s]<<",";
+	}
+	return 0;
+}
